@@ -1,0 +1,18 @@
+<Root>
+    <Accounts>
+        <Account id="Acc-1" balance="1000.00" currency="USD"/>
+        <Account id="Acc-2" balance="1200.00" currency="EUR"/>
+        <Account id="Acc-3" balance="800.00" currency="GBP"/>
+        <Account id="Acc-4" balance="1500.00" currency="JPY"/>
+        <Account id="Acc-5" balance="700.00" currency="AUD"/>
+    </Accounts>
+    <Transactions>
+        <Transaction id="Trx-1" amount="200.00" currency="USD"/>
+        <Transaction id="Trx-2" amount="150.00" currency="EUR"/>
+        <Transaction id="Trx-3" amount="300.00" currency="GBP"/>
+        <Transaction id="Trx-4" amount="500.00" currency="JPY"/>
+        <Transaction id="Trx-5" amount="250.00" currency="AUD"/>
+        <Transaction id="Trx-6" amount="100.00" currency="USD"/>
+        <Transaction id="Trx-7" amount="400.00" currency="EUR"/>
+    </Transactions>
+</Root>

@@ -1,0 +1,27 @@
+syntax = "proto3";
+package FYBER.userconfiguration;
+
+// Define an Account
+message Account {
+  string id = 1;
+  double balance = 2;
+  string currency = 3;
+}
+
+// Define a Transaction
+message Transaction {
+  string id = 1;
+  double amount = 2;
+  string currency = 3;
+  // Optionally, add fields for transaction status, timestamp, etc.
+}
+
+// Define a wrapper for a list of accounts
+message Accounts {
+  repeated Account accounts = 1;
+}
+
+// Define a wrapper for a list of transactions
+message Transactions {
+  repeated Transaction transactions = 1;
+}
