@@ -48,3 +48,5 @@ end
 
 gem 'nokogiri'
 gem 'google-protobuf'
+
+gem 'sqlite3'

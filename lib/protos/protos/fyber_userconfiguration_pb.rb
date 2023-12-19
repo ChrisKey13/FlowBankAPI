@@ -21,6 +21,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "FYBER.userconfiguration.Transactions" do
       repeated :transactions, :message, 1, "FYBER.userconfiguration.Transaction"
     end
+    add_message "FYBER.userconfiguration.AccountSeq" do
+      repeated :account, :message, 1, "FYBER.userconfiguration.AccountSeq.AccountWithTransactions"
+    end
+    add_message "FYBER.userconfiguration.AccountSeq.AccountWithTransactions" do
+      optional :account, :message, 1, "FYBER.userconfiguration.Account"
+      repeated :transactions, :message, 2, "FYBER.userconfiguration.Transaction"
+    end
   end
 end
 
@@ -30,5 +37,7 @@ module FYBER
     Transaction = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FYBER.userconfiguration.Transaction").msgclass
     Accounts = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FYBER.userconfiguration.Accounts").msgclass
     Transactions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FYBER.userconfiguration.Transactions").msgclass
+    AccountSeq = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FYBER.userconfiguration.AccountSeq").msgclass
+    AccountSeq::AccountWithTransactions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FYBER.userconfiguration.AccountSeq.AccountWithTransactions").msgclass
   end
 end

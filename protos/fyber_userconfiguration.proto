@@ -13,7 +13,7 @@ message Transaction {
   string id = 1;
   double amount = 2;
   string currency = 3;
-  // Optionally, add fields for transaction status, timestamp, etc.
+  // Additional fields can be added here if needed
 }
 
 // Define a wrapper for a list of accounts
@@ -24,4 +24,13 @@ message Accounts {
 // Define a wrapper for a list of transactions
 message Transactions {
   repeated Transaction transactions = 1;
+}
+
+// Define a wrapper for a sequence of accounts each with their transactions
+message AccountSeq {
+  message AccountWithTransactions {
+    Account account = 1;
+    repeated Transaction transactions = 2;
+  }
+  repeated AccountWithTransactions account = 1;
 }
