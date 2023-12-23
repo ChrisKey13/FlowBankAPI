@@ -1,18 +1,56 @@
 <Root>
     <Accounts>
-        <Account id="Acc-1" balance="1000.00" currency="USD"/>
-        <Account id="Acc-2" balance="1200.00" currency="EUR"/>
-        <Account id="Acc-3" balance="800.00" currency="GBP"/>
-        <Account id="Acc-4" balance="1500.00" currency="JPY"/>
-        <Account id="Acc-5" balance="700.00" currency="AUD"/>
+        <Account id="A123" balance="5000.00" currency="EUR"/>
+        <Account id="B456" balance="3000.00" currency="EUR"/>
+        <Account id="C789" balance="7000.00" currency="EUR"/>
+        <Account id="D101" balance="2500.00" currency="EUR"/>
+        <Account id="E202" balance="4500.00" currency="EUR"/>
+        <Account id="F303" balance="6000.00" currency="EUR"/>
+        <Account id="G404" balance="5200.00" currency="USD"/>
+        <Account id="H505" balance="4300.00" currency="GBP"/>
+        <Account id="I606" balance="3800.00" currency="JPY"/>
+        <Account id="J707" balance="2900.00" currency="AUD"/>
+        <Account id="K808" balance="6100.00" currency="CHF"/>
+        <Account id="A001" balance="10000.00" currency="EUR"/>
+        <Account id="A002" balance="15000.00" currency="USD"/>
+        <Account id="A003" balance="20000.00" currency="GBP"/>
+        <Account id="A004" balance="25000.00" currency="JPY"/>
     </Accounts>
     <Transactions>
-        <Transaction id="Trx-1" amount="200.00" currency="USD"/>
-        <Transaction id="Trx-2" amount="150.00" currency="EUR"/>
-        <Transaction id="Trx-3" amount="300.00" currency="GBP"/>
-        <Transaction id="Trx-4" amount="500.00" currency="JPY"/>
-        <Transaction id="Trx-5" amount="250.00" currency="AUD"/>
-        <Transaction id="Trx-6" amount="100.00" currency="USD"/>
-        <Transaction id="Trx-7" amount="400.00" currency="EUR"/>
+        <!-- Transactions for Account A123 -->
+        <Transaction id="T1001" account_id="A123" amount="200.00" currency="EUR" type="deposit" date="2023-01-10"/>
+        <Transaction id="T1002" account_id="A123" amount="150.00" currency="EUR" type="withdrawal" date="2023-01-12"/>
+        <Transaction id="T1003" account_id="A123" amount="300.00" currency="EUR" type="deposit" date="2023-01-15"/>
+        <!-- Transactions for Account B456 -->
+        <Transaction id="T2001" account_id="B456" amount="500.00" currency="EUR" type="deposit" date="2023-01-11"/>
+        <Transaction id="T2002" account_id="B456" amount="400.00" currency="EUR" type="withdrawal" date="2023-01-13"/>
+        <!-- Transactions for Account C789 -->
+        <Transaction id="T3001" account_id="C789" amount="1000.00" currency="EUR" type="deposit" date="2023-01-10"/>
+        <Transaction id="T3002" account_id="C789" amount="200.00" currency="EUR" type="withdrawal" date="2023-01-14"/>
+        <Transaction id="T3003" account_id="C789" amount="350.00" currency="EUR" type="deposit" date="2023-01-18"/>
+        <!-- Transactions for Account D101 -->
+        <Transaction id="T4001" account_id="D101" amount="250.00" currency="EUR" type="deposit" date="2023-01-20"/>
+        <Transaction id="T4002" account_id="D101" amount="100.00" currency="EUR" type="withdrawal" date="2023-01-22"/>
+        <!-- Transactions for Account E202 -->
+        <Transaction id="T5001" account_id="E202" amount="750.00" currency="EUR" type="deposit" date="2023-01-19"/>
+        <Transaction id="T5002" account_id="E202" amount="500.00" currency="EUR" type="withdrawal" date="2023-01-21"/>
+        <!-- Transactions for Account F303 -->
+        <Transaction id="T6001" account_id="F303" amount="900.00" currency="EUR" type="deposit" date="2023-01-17"/>
+        <Transaction id="T6002" account_id="F303" amount="300.00" currency="EUR" type="withdrawal" date="2023-01-23"/>
+        <Transaction id="T7001" account_id="G404" amount="400.00" currency="USD" type="deposit" date="2023-01-25"/>
+        <Transaction id="T7002" account_id="G404" amount="200.00" currency="USD" type="withdrawal" date="2023-01-27"/>
+        <!-- Transactions for Account H505 -->
+        <Transaction id="T8001" account_id="H505" amount="300.00" currency="GBP" type="deposit" date="2023-01-26"/>
+        <Transaction id="T8002" account_id="H505" amount="150.00" currency="GBP" type="withdrawal" date="2023-01-28"/>
+        <!-- Transactions for Account I606 -->
+        <Transaction id="T9001" account_id="I606" amount="50000.00" currency="JPY" type="deposit" date="2023-01-29"/>
+        <Transaction id="T9002" account_id="I606" amount="25000.00" currency="JPY" type="withdrawal" date="2023-01-31"/>
+        <!-- Transactions for Account J707 -->
+        <Transaction id="T10001" account_id="J707" amount="350.00" currency="AUD" type="deposit" date="2023-02-01"/>
+        <Transaction id="T10002" account_id="J707" amount="175.00" currency="AUD" type="withdrawal" date="2023-02-03"/>
+        <!-- Transactions for Account K808 -->
+        <Transaction id="T11001" account_id="K808" amount="600.00" currency="CHF" type="deposit" date="2023-02-02"/>
+        <Transaction id="T11002" account_id="K808" amount="300.00" currency="CHF" type="withdrawal" date="2023-02-04"/>
     </Transactions>
 </Root>
+

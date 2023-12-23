@@ -13,7 +13,9 @@ message Transaction {
   string id = 1;
   double amount = 2;
   string currency = 3;
-  // Additional fields can be added here if needed
+  string account_id = 4;  // Add account ID
+  string type = 5;        // Transaction type (e.g., deposit, withdrawal)
+  string date = 6;        // Date of the transaction
 }
 
 // Define a wrapper for a list of accounts
@@ -33,4 +35,9 @@ message AccountSeq {
     repeated Transaction transactions = 2;
   }
   repeated AccountWithTransactions account = 1;
+}
+
+// Define a new message for Transaction History
+message TransactionHistory {
+  repeated Transaction transactions = 1;
 }
