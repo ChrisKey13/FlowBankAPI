@@ -1,42 +1,80 @@
 require 'nokogiri'
 require_relative '../../lib/protos/protos/fyber_userconfiguration_pb'
 
-
 class XmlParser
-  def initialize(xml_content)
-    @xml_doc = Nokogiri::XML(xml_content)
+  include Singleton
+
+  attr_accessor :xml_content
+  attr_reader :accounts, :transactions
+
+  def self.set_xml_data(xml_content)
+    if instance.xml_content != xml_content
+      instance.xml_content = xml_content
+      instance.parse_data
+      pp "New data source file"
+    else
+      pp "the xml file remains unchanged"
+    end
+  end
+
+  def self.get_cached_data
+    instance.cached_data
+  end
+
+  def cached_data
+    {
+      accounts: @accounts,
+      transactions: @transactions
+    }
   end
 
   def parse_data
-    {
-      accounts: parse_accounts,
-      transactions: parse_transactions
-    }
+    return if @xml_content.nil?
+
+    xml_doc = Nokogiri::XML(xml_content)
+    @accounts = parse_nodes(xml_doc, '//Accounts/Account', method(:extract_account_data))
+    @transactions = parse_nodes(xml_doc, '//Transactions/Transaction', method(:extract_transaction_data))
   end
 
   private
 
-  def parse_accounts
-    accounts = []
-    @xml_doc.xpath('//Accounts/Account').each do |account_node|
-      id = account_node['id']
-      balance = account_node['balance'].to_f
-      currency = account_node['currency']
-      converted_balance = CurrencyConverter.convert_to_eur(balance, currency)
-      accounts << FYBER::Userconfiguration::Account.new(id: id, balance: converted_balance, currency: 'EUR')
-    end
-    accounts
+  def initialize
+    @accounts = []
+    @transactions = []
   end
 
-  def parse_transactions
-    transactions = []
-    @xml_doc.xpath('//Transactions/Transaction').each do |transaction_node|
-      id = transaction_node['id']
-      amount = transaction_node['amount'].to_f
-      currency = transaction_node['currency']
-      converted_amount = CurrencyConverter.convert_to_eur(amount, currency)
-      transactions << FYBER::Userconfiguration::Transaction.new(id: id, amount: converted_amount, currency: 'EUR')
+
+  def parse_nodes(xml_doc, xpath, data_extractor)
+    xml_doc.xpath(xpath).map do |node|
+      data = data_extractor.call(node)
+      create_protobuf_object(data)
     end
-    transactions
+  end
+
+  def extract_account_data(node)
+    {
+      id: node['id'],
+      balance: CurrencyConverter.convert_to_eur(node['balance'].to_f, node['currency']),
+      currency: 'EUR'
+    }
+  end
+
+  def extract_transaction_data(node)
+    {
+      id: node['id'],
+      account_id: node['account_id'],
+      amount: CurrencyConverter.convert_to_eur(node['amount'].to_f, node['currency']),
+      currency: 'EUR',
+      type: node['type'],
+      date: node['date']
+    }
+  end
+
+  def create_protobuf_object(data)
+    if data.key?(:account_id)
+      FYBER::Userconfiguration::Transaction.new(data)
+    else
+      FYBER::Userconfiguration::Account.new(data)
+    end
   end
 end

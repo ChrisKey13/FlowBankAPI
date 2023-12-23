@@ -24,4 +24,22 @@ class Protobuf
 
     account_seq.to_proto
   end
+
+  def self.generate_protobuf_history_data(filtered_transactions)
+    transaction_history = FYBER::Userconfiguration::TransactionHistory.new
+
+    filtered_transactions.each do |transaction|
+      transaction_proto = FYBER::Userconfiguration::Transaction.new(
+        id: transaction.id,
+        account_id: transaction.account_id,
+        amount: transaction.amount,
+        currency: transaction.currency,
+        type: transaction.type,
+        date: transaction.date
+      )
+      transaction_history.transactions << transaction_proto
+    end
+
+    transaction_history.to_proto
+  end
 end
